@@ -35,12 +35,16 @@ const AgentArchitecture = () => {
               Part 1: Agent Architecture
             </h2>
 
+            <div className="rounded-lg bg-sky-50/60 border border-sky-100 px-5 py-4 my-6 text-[15px] text-sky-900/80 leading-relaxed">
+              Three agents, two databases, one terminal. Here's how they work together.
+            </div>
+
             <h3 className="text-[17px] font-semibold text-gray-900 mt-10">The Setup</h3>
             <p>
               I'm a one-person technical support team for zenloop. Two platforms: classic (Elixir/PostgreSQL) and zensurveys (Python/React/Supabase). Integrations with Freshdesk, Braze, Salesforce, and customer APIs. The tool that makes this possible: <strong>Claude Code</strong> — an AI coding agent running locally in my terminal.
             </p>
 
-            <h3 className="text-[17px] font-semibold text-gray-900 mt-10">Three Specialized Agents</h3>
+            <h3 className="text-[17px] font-semibold text-gray-900 mt-10">🔧 Three Specialized Agents</h3>
 
             <p><strong className="text-gray-900">Support Investigator</strong> — the workhorse. When a ticket comes in with a customer ID, it runs DB queries across both databases in parallel. Pulls survey config, recent responses, org settings, checks throttling. And it checks past logs — "have we seen this customer before?"</p>
             <blockquote className="border-l-[3px] border-sky-500 pl-4 my-5 italic text-gray-500">
@@ -65,26 +69,26 @@ const AgentArchitecture = () => {
             <h3 className="text-[17px] font-semibold text-gray-900 mt-10">CLAUDE.md Guardrails</h3>
             <p>Three layers of configuration make it safe and repeatable:</p>
 
-            <div className="overflow-x-auto my-6">
+            <div className="overflow-x-auto my-6 rounded-lg border border-gray-200 bg-gray-50/50">
               <table className="w-full text-[15px] border-collapse">
                 <thead>
-                  <tr className="border-b-2 border-gray-200">
-                    <th className="text-left py-3 pr-6 font-semibold text-gray-900">Layer</th>
-                    <th className="text-left py-3 font-semibold text-gray-900">What it contains</th>
+                  <tr className="border-b-2 border-gray-200 bg-gray-100/60">
+                    <th className="text-left py-3 px-4 pr-6 font-semibold text-gray-900">Layer</th>
+                    <th className="text-left py-3 px-4 font-semibold text-gray-900">What it contains</th>
                   </tr>
                 </thead>
                 <tbody className="text-gray-700">
                   <tr className="border-b border-gray-100">
-                    <td className="py-3 pr-6 font-medium text-gray-900">CLAUDE.md</td>
-                    <td className="py-3">Investigation workflow (8-step checklist), SQL templates, integration gotchas</td>
+                    <td className="py-3 px-4 pr-6 font-medium text-gray-900">CLAUDE.md</td>
+                    <td className="py-3 px-4">Investigation workflow (8-step checklist), SQL templates, integration gotchas</td>
                   </tr>
                   <tr className="border-b border-gray-100">
-                    <td className="py-3 pr-6 font-medium text-gray-900">MEMORY.md</td>
-                    <td className="py-3">Persists across sessions. Repeat customers by org ID with history. Key patterns from 14 investigations</td>
+                    <td className="py-3 px-4 pr-6 font-medium text-gray-900">MEMORY.md</td>
+                    <td className="py-3 px-4">Persists across sessions. Repeat customers by org ID with history. Key patterns from 14 investigations</td>
                   </tr>
-                  <tr className="border-b border-gray-100">
-                    <td className="py-3 pr-6 font-medium text-gray-900">CODE-BASE CLAUDE.md</td>
-                    <td className="py-3">Known unfixed bugs with file locations, SurveyJS gotchas, score system reference</td>
+                  <tr>
+                    <td className="py-3 px-4 pr-6 font-medium text-gray-900">CODE-BASE CLAUDE.md</td>
+                    <td className="py-3 px-4">Known unfixed bugs with file locations, SurveyJS gotchas, score system reference</td>
                   </tr>
                 </tbody>
               </table>
@@ -123,7 +127,7 @@ const AgentArchitecture = () => {
               Part 2: The Learning Loop
             </h2>
 
-            <h3 className="text-[17px] font-semibold text-gray-900 mt-10">Case Study: The Umlaut Bug</h3>
+            <h3 className="text-[17px] font-semibold text-gray-900 mt-10">🔍 Case Study: The Umlaut Bug</h3>
 
             <p>
               <strong className="text-gray-900">The ticket:</strong> A customer's API integration was broken. <code className="text-[14px] bg-gray-100 px-1.5 py-0.5 rounded font-mono">additional_answers</code> returning 400 Bad Request. Score submission worked fine.
@@ -144,26 +148,26 @@ const AgentArchitecture = () => {
 
             <h3 className="text-[17px] font-semibold text-gray-900 mt-10">Three Places It Fed Back</h3>
 
-            <div className="overflow-x-auto my-6">
+            <div className="overflow-x-auto my-6 rounded-lg border border-gray-200 bg-gray-50/50">
               <table className="w-full text-[15px] border-collapse">
                 <thead>
-                  <tr className="border-b-2 border-gray-200">
-                    <th className="text-left py-3 pr-6 font-semibold text-gray-900">Where</th>
-                    <th className="text-left py-3 font-semibold text-gray-900">What was added</th>
+                  <tr className="border-b-2 border-gray-200 bg-gray-100/60">
+                    <th className="text-left py-3 px-4 pr-6 font-semibold text-gray-900">Where</th>
+                    <th className="text-left py-3 px-4 font-semibold text-gray-900">What was added</th>
                   </tr>
                 </thead>
                 <tbody className="text-gray-700">
                   <tr className="border-b border-gray-100">
-                    <td className="py-3 pr-6 font-medium text-gray-900">CLAUDE.md</td>
-                    <td className="py-3">"<code className="text-[14px] bg-gray-100 px-1.5 py-0.5 rounded font-mono">single_select</code> does exact string match — no Unicode normalization. Always copy option strings from API response."</td>
+                    <td className="py-3 px-4 pr-6 font-medium text-gray-900">CLAUDE.md</td>
+                    <td className="py-3 px-4">"<code className="text-[14px] bg-gray-100 px-1.5 py-0.5 rounded font-mono">single_select</code> does exact string match — no Unicode normalization. Always copy option strings from API response."</td>
                   </tr>
                   <tr className="border-b border-gray-100">
-                    <td className="py-3 pr-6 font-medium text-gray-900">MEMORY.md</td>
-                    <td className="py-3">Customer added as repeat entry with org ID and specific encoding pattern</td>
+                    <td className="py-3 px-4 pr-6 font-medium text-gray-900">MEMORY.md</td>
+                    <td className="py-3 px-4">Customer added as repeat entry with org ID and specific encoding pattern</td>
                   </tr>
-                  <tr className="border-b border-gray-100">
-                    <td className="py-3 pr-6 font-medium text-gray-900">Known Bugs</td>
-                    <td className="py-3">Missing normalization at <code className="text-[14px] bg-gray-100 px-1.5 py-0.5 rounded font-mono">additional_questions.ex:209-212</code></td>
+                  <tr>
+                    <td className="py-3 px-4 pr-6 font-medium text-gray-900">Known Bugs</td>
+                    <td className="py-3 px-4">Missing normalization at <code className="text-[14px] bg-gray-100 px-1.5 py-0.5 rounded font-mono">additional_questions.ex:209-212</code></td>
                   </tr>
                 </tbody>
               </table>
@@ -197,9 +201,11 @@ const AgentArchitecture = () => {
 
             {/* Closing */}
             <div className="mt-14 pt-8 border-t border-gray-200">
-              <blockquote className="border-l-[3px] border-sky-500 pl-4 my-5 italic text-gray-500 text-[17px]">
-                Investigate → Document findings → Agent gets smarter → Next ticket is faster.
-              </blockquote>
+              <div className="rounded-lg bg-amber-50/70 border border-amber-200/60 px-5 py-4 my-6">
+                <p className="text-[16px] font-medium text-amber-900/80 leading-relaxed">
+                  🧠 Investigate → Document findings → Agent gets smarter → Next ticket is faster.
+                </p>
+              </div>
               <p>
                 After 14 investigations, the agent has a library of gotchas, known bugs, and customer history. It compounds. And the more I use it, the wider the gap gets between what one person can handle with this setup versus without it.
               </p>
