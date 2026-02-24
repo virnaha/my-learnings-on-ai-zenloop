@@ -41,7 +41,7 @@ const AgentArchitecture = () => {
             </p>
 
             <div className="rounded-lg bg-sky-50/60 border border-sky-100 px-5 py-4 my-6 text-[15px] text-sky-900/80 leading-relaxed">
-              This is not "chatting with AI." It is an operational debugging architecture.
+              An operational debugging architecture — built for real investigations, against real systems.
             </div>
 
             {/* The Architecture */}
@@ -180,13 +180,13 @@ const AgentArchitecture = () => {
               Over time, the investigation process becomes faster, more deterministic, less dependent on recall, and less vulnerable to context switching. <strong>Every resolved ticket reduces the cost of the next one.</strong>
             </p>
 
-            {/* What This Is */}
+            {/* The Human Layer */}
             <h2 className="text-[22px] font-semibold text-gray-900 mt-14 mb-4 pt-8 border-t border-gray-200">
-              What This Is — and Is Not
+              Structured Amplification
             </h2>
 
             <p>
-              This is not autonomous support. It is <strong>structured amplification</strong>. The agents reduce search time, cognitive load, repeated reasoning, and context switching. I still validate findings, still communicate with customers. Judgment remains human. But the investigation surface area shrinks.
+              The agents handle search time, cognitive load, repeated reasoning, and context switching. I handle validation, customer communication, and judgment. The investigation surface area shrinks — but the human layer stays intact.
             </p>
 
             {/* Closing */}
@@ -206,7 +206,7 @@ const AgentArchitecture = () => {
               </div>
 
               <p>
-                The gap widens. Not because the AI is smarter — but because the system remembers.
+                The gap widens — because the system remembers.
               </p>
             </div>
           </div>
