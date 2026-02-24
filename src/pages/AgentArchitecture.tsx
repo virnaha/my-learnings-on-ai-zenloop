@@ -266,19 +266,6 @@ const AgentArchitecture = () => {
         </div>
       </ContentSection>
 
-      {/* The Numbers */}
-      <ContentSection title="📊 The Numbers">
-        <div className="space-y-4">
-          <ul className="list-disc pl-5 space-y-1">
-            <li>14 investigations logged</li>
-            <li>7 repeat customers with full context</li>
-            <li>~60% of tickets are email embed issues — agent knows the gotcha checklist</li>
-            <li>"Responses not saving" → agent immediately checks <code className="text-xs bg-secondary px-1 py-0.5 rounded">block_anonymous_responses</code> + identity params</li>
-            <li>"Response drop" → agent immediately checks embed script, domain filters, CSP</li>
-          </ul>
-        </div>
-      </ContentSection>
-
       {/* Closing */}
       <section className="bg-gradient-to-br from-[hsl(210_85%_35%)] to-[hsl(215_75%_45%)] py-12">
         <div className="container mx-auto px-4">
