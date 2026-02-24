@@ -28,30 +28,16 @@ const AgentArchitecture = () => {
 
           <div className="space-y-6 text-[16px] text-gray-700 leading-[1.8]">
 
-            <p>I run technical support alone at zenloop.</p>
-
-            <p>We operate two platforms:</p>
-            <ul className="list-disc pl-6 space-y-1 my-4">
-              <li><strong>Classic</strong> — Elixir + PostgreSQL</li>
-              <li><strong>Zensurveys</strong> — Python + React + Supabase</li>
-            </ul>
-
-            <p>We also maintain integrations with Freshdesk, Braze, Salesforce, and customer APIs.</p>
-
-            <p>A single support ticket can involve:</p>
-            <ul className="list-disc pl-6 space-y-1 my-4">
-              <li>Survey configuration</li>
-              <li>Response storage</li>
-              <li>API validation</li>
-              <li>Encoding issues</li>
-              <li>Feature flags</li>
-              <li>Email template parameters</li>
-            </ul>
-
-            <p>In a traditional setup, this would require a team.</p>
+            <p>
+              I'm a one-person technical support team at zenloop. I handle two production platforms: <strong>classic</strong> (Elixir/PostgreSQL) and <strong>zensurveys</strong> (Python/React/Supabase), plus integrations with Freshdesk, Braze, Salesforce, and various customer APIs.
+            </p>
 
             <p>
-              Instead, I use <strong>Claude Code</strong>, running locally in my terminal, as a structured multi-agent investigation system.
+              Any given support ticket might touch survey configuration, response storage, API validation, encoding edge cases, feature flags, or email template parameters — often several at once. In a traditional setup, you'd want a team for this.
+            </p>
+
+            <p>
+              Instead, I use <strong>Claude Code</strong> — an AI coding agent running locally in my terminal — as a structured multi-agent investigation system.
             </p>
 
             <div className="rounded-lg bg-sky-50/60 border border-sky-100 px-5 py-4 my-6 text-[15px] text-sky-900/80 leading-relaxed">
