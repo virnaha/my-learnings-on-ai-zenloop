@@ -14,7 +14,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter basename="/rfp-case-study-zenloop">
+      <BrowserRouter basename="/my-learnings-on-ai-zenloop">
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/agents" element={<AgentArchitecture />} />
