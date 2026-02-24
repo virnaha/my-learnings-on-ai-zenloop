@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 
 const posts = [
   {
-    title: "AI Agents for Solo Support",
-    description: "How Claude Code powers a one-person support team — agent architecture, CLAUDE.md guardrails, skills & plugins, and the compounding learning loop.",
+    title: "How AI Agents Power My One-Person Support Team",
+    description: "Multiple agents. Two databases. One terminal. An operational debugging architecture built on Claude Code.",
     date: "Feb 25, 2026",
     path: "/agents",
   },

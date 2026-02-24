@@ -16,199 +16,342 @@ const AgentArchitecture = () => {
 
       <main className="mx-auto max-w-[640px] px-6 py-14">
         <article>
-          {/* Title */}
           <header className="mb-12">
             <time className="text-[13px] font-medium text-gray-400 tracking-wide uppercase">Feb 25, 2026</time>
             <h1 className="mt-2 text-[28px] font-semibold text-gray-900 tracking-tight leading-tight">
-              AI Agents for Solo Support
+              How AI Agents Power My One-Person Support Team
             </h1>
             <p className="mt-2 text-[16px] text-gray-500 leading-relaxed">
-              How Claude Code powers a one-person support team.
+              Multiple agents. Two databases. One terminal.
             </p>
           </header>
 
-          {/* Prose content */}
           <div className="space-y-6 text-[16px] text-gray-700 leading-[1.8]">
 
-            {/* Part 1 */}
-            <h2 className="text-[22px] font-semibold text-gray-900 mt-14 mb-4 pt-8 border-t border-gray-200">
-              Part 1: Agent Architecture
-            </h2>
+            <p>I run technical support alone at zenloop.</p>
+
+            <p>We operate two platforms:</p>
+            <ul className="list-disc pl-6 space-y-1 my-4">
+              <li><strong>Classic</strong> — Elixir + PostgreSQL</li>
+              <li><strong>Zensurveys</strong> — Python + React + Supabase</li>
+            </ul>
+
+            <p>We also maintain integrations with Freshdesk, Braze, Salesforce, and customer APIs.</p>
+
+            <p>A single support ticket can involve:</p>
+            <ul className="list-disc pl-6 space-y-1 my-4">
+              <li>Survey configuration</li>
+              <li>Response storage</li>
+              <li>API validation</li>
+              <li>Encoding issues</li>
+              <li>Feature flags</li>
+              <li>Email template parameters</li>
+            </ul>
+
+            <p>In a traditional setup, this would require a team.</p>
+
+            <p>
+              Instead, I use <strong>Claude Code</strong>, running locally in my terminal, as a structured multi-agent investigation system.
+            </p>
 
             <div className="rounded-lg bg-sky-50/60 border border-sky-100 px-5 py-4 my-6 text-[15px] text-sky-900/80 leading-relaxed">
-              Three agents, two databases, one terminal. Here's how they work together.
+              This is not "chatting with AI." It is an operational debugging architecture.
             </div>
 
-            <h3 className="text-[17px] font-semibold text-gray-900 mt-10">The Setup</h3>
-            <p>
-              I'm a one-person technical support team for zenloop. Two platforms: classic (Elixir/PostgreSQL) and zensurveys (Python/React/Supabase). Integrations with Freshdesk, Braze, Salesforce, and customer APIs. The tool that makes this possible: <strong>Claude Code</strong> — an AI coding agent running locally in my terminal.
-            </p>
-
-            <h3 className="text-[17px] font-semibold text-gray-900 mt-10">🔧 Three Specialized Agents</h3>
-
-            <p><strong className="text-gray-900">Support Investigator</strong> — the workhorse. When a ticket comes in with a customer ID, it runs DB queries across both databases in parallel. Pulls survey config, recent responses, org settings, checks throttling. And it checks past logs — "have we seen this customer before?"</p>
-            <blockquote className="border-l-[3px] border-sky-500 pl-4 my-5 italic text-gray-500">
-              Email embed ticket: found 6 test responses, 0 production, <code className="text-[14px] bg-gray-100 px-1.5 py-0.5 rounded not-italic font-mono">block_anonymous_responses=true</code> → narrowed to identity parameter problem in minutes.
-            </blockquote>
-
-            <p><strong className="text-gray-900">Bug Troubleshooter</strong> — the code reader. When the database alone doesn't explain it, this agent reads the actual source code. Traces validation logic, finds edge cases.</p>
-            <blockquote className="border-l-[3px] border-sky-500 pl-4 my-5 italic text-gray-500">
-              API integration ticket: found exact Elixir line (<code className="text-[14px] bg-gray-100 px-1.5 py-0.5 rounded not-italic font-mono">additional_questions.ex:209</code>) doing strict string match with no Unicode normalization.
-            </blockquote>
-
-            <p><strong className="text-gray-900">Browser Reproducer</strong> — the proof. Spins up a real browser via Playwright, loads the survey, submits end-to-end. Confirms whether the issue is zenloop-side or client-side.</p>
-            <blockquote className="border-l-[3px] border-sky-500 pl-4 my-5 italic text-gray-500">
-              Playwright test with correct URL params → response saved successfully. Proved zenloop works fine — problem was the customer's email template.
-            </blockquote>
-
-            <h3 className="text-[17px] font-semibold text-gray-900 mt-10">Production Data Connection</h3>
-            <p>
-              MCP (Model Context Protocol) connects Claude Code to both databases. Direct PostgreSQL for classic, Supabase for zensurveys. I give it a survey ID, it writes and runs the SQL. Pre-built query templates in CLAUDE.md so it starts from known-good SQL — it doesn't figure out the schema every time.
-            </p>
-
-            <h3 className="text-[17px] font-semibold text-gray-900 mt-10">CLAUDE.md Guardrails</h3>
-            <p>Three layers of configuration make it safe and repeatable:</p>
-
-            <div className="overflow-x-auto my-6 rounded-lg border border-gray-200 bg-gray-50/50">
-              <table className="w-full text-[15px] border-collapse">
-                <thead>
-                  <tr className="border-b-2 border-gray-200 bg-gray-100/60">
-                    <th className="text-left py-3 px-4 pr-6 font-semibold text-gray-900">Layer</th>
-                    <th className="text-left py-3 px-4 font-semibold text-gray-900">What it contains</th>
-                  </tr>
-                </thead>
-                <tbody className="text-gray-700">
-                  <tr className="border-b border-gray-100">
-                    <td className="py-3 px-4 pr-6 font-medium text-gray-900">CLAUDE.md</td>
-                    <td className="py-3 px-4">Investigation workflow (8-step checklist), SQL templates, integration gotchas</td>
-                  </tr>
-                  <tr className="border-b border-gray-100">
-                    <td className="py-3 px-4 pr-6 font-medium text-gray-900">MEMORY.md</td>
-                    <td className="py-3 px-4">Persists across sessions. Repeat customers by org ID with history. Key patterns from 14 investigations</td>
-                  </tr>
-                  <tr>
-                    <td className="py-3 px-4 pr-6 font-medium text-gray-900">CODE-BASE CLAUDE.md</td>
-                    <td className="py-3 px-4">Known unfixed bugs with file locations, SurveyJS gotchas, score system reference</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <p>
-              Built-in safety: hedged language ("likely", "suggests") — the agent investigates, I validate, I communicate to customers. It never talks to customers directly.
-            </p>
-
-            <h3 className="text-[17px] font-semibold text-gray-900 mt-10">Skills & Plugins — The Composable Layer</h3>
-
-            <p><strong className="text-gray-900">Custom skills I built</strong> (5 small files for my domain):</p>
-            <ul className="list-disc pl-6 space-y-2 my-4">
-              <li><code className="text-[14px] bg-gray-100 px-1.5 py-0.5 rounded font-mono">zenclassic-db</code> — DB connection wrapper</li>
-              <li><code className="text-[14px] bg-gray-100 px-1.5 py-0.5 rounded font-mono">troubleshoot</code> — enforces 8-step investigation workflow</li>
-              <li><code className="text-[14px] bg-gray-100 px-1.5 py-0.5 rounded font-mono">handoff</code> — auto-generates session summaries</li>
-              <li><code className="text-[14px] bg-gray-100 px-1.5 py-0.5 rounded font-mono">parallel-debug</code> — concurrent investigation threads (DB + code + API simultaneously)</li>
-              <li><code className="text-[14px] bg-gray-100 px-1.5 py-0.5 rounded font-mono">dictionary-seed-prep</code> — data format conversion for uploads</li>
-            </ul>
-
-            <p><strong className="text-gray-900">Marketplace plugins</strong> (plug-and-play):</p>
-            <ul className="list-disc pl-6 space-y-2 my-4">
-              <li><code className="text-[14px] bg-gray-100 px-1.5 py-0.5 rounded font-mono">superpowers</code> — TDD, systematic debugging, brainstorming, code review workflows</li>
-              <li><code className="text-[14px] bg-gray-100 px-1.5 py-0.5 rounded font-mono">coworkpowers</code> — 4-phase compound knowledge loop (Research → Work → Review → Compound) with 20+ specialized agents</li>
-              <li><code className="text-[14px] bg-gray-100 px-1.5 py-0.5 rounded font-mono">debugging-toolkit</code> / <code className="text-[14px] bg-gray-100 px-1.5 py-0.5 rounded font-mono">error-debugging</code> — debugger + error detective agents</li>
-              <li><code className="text-[14px] bg-gray-100 px-1.5 py-0.5 rounded font-mono">documentation-generation</code> — API docs, architecture docs, diagrams</li>
-              <li><code className="text-[14px] bg-gray-100 px-1.5 py-0.5 rounded font-mono">playwright-cli</code> / <code className="text-[14px] bg-gray-100 px-1.5 py-0.5 rounded font-mono">sentry-cli</code> — browser automation + error tracking</li>
-            </ul>
-
-            <p>
-              The architecture in one sentence: <strong className="text-gray-900">CLAUDE.md for knowledge, skills for workflows, plugins for capabilities, agents for execution.</strong> They compose.
-            </p>
-
-            {/* Part 2 */}
+            {/* The Architecture */}
             <h2 className="text-[22px] font-semibold text-gray-900 mt-14 mb-4 pt-8 border-t border-gray-200">
-              Part 2: The Learning Loop
+              The Architecture
             </h2>
 
-            <h3 className="text-[17px] font-semibold text-gray-900 mt-10">🔍 Case Study: The Umlaut Bug</h3>
+            <h3 className="text-[17px] font-semibold text-gray-900 mt-10">Multiple Specialized Agents</h3>
 
             <p>
-              <strong className="text-gray-900">The ticket:</strong> A customer's API integration was broken. <code className="text-[14px] bg-gray-100 px-1.5 py-0.5 rounded font-mono">additional_answers</code> returning 400 Bad Request. Score submission worked fine.
+              Rather than relying on one general assistant, I use multiple focused agents. Each has a defined role and operates against real systems.
             </p>
 
-            <p>What the agent did, in one session:</p>
-            <ol className="list-decimal pl-6 space-y-3 my-4">
-              <li>Queried DB → 30 answers, only 3 had additional answers</li>
-              <li>Found stored options with mixed encoding — some with German umlauts spelled out, some with actual special characters</li>
-              <li>Read Elixir validation code → exact string match, no Unicode normalization</li>
-              <li>Live API test → submitting with the umlaut character = 400, submitting with the spelled-out version = 201</li>
-              <li>Root cause confirmed: mixed encoding in stored options + strict matching = silent rejection</li>
-            </ol>
+            <p>They work across:</p>
+            <ul className="list-disc pl-6 space-y-1 my-4">
+              <li>Production databases</li>
+              <li>Source code</li>
+              <li>Browser sessions</li>
+              <li>Raw API calls</li>
+              <li>Persistent memory files</li>
+            </ul>
 
-            <p>
-              Without the agent, this would have been hours of manually querying the DB, reading unfamiliar Elixir code, crafting test API calls. With the agent: one session, full root cause, tested and confirmed fix.
-            </p>
+            <p>Each ticket activates the agents it needs.</p>
 
-            <h3 className="text-[17px] font-semibold text-gray-900 mt-10">Three Places It Fed Back</h3>
+            {/* Agent 1 */}
+            <h3 className="text-[17px] font-semibold text-gray-900 mt-10">🔧 1. The Support Investigator</h3>
+            <p className="italic text-gray-500">Interrogates production data.</p>
+
+            <p>When a ticket includes a survey ID or org ID, this agent starts with facts.</p>
+
+            <p>It:</p>
+            <ul className="list-disc pl-6 space-y-1 my-4">
+              <li>Runs SQL against PostgreSQL and Supabase</li>
+              <li>Pulls survey configuration</li>
+              <li>Checks recent responses</li>
+              <li>Inspects org-level settings</li>
+              <li>Verifies throttling rules</li>
+              <li>Reviews logs</li>
+              <li>Searches prior investigation memory</li>
+            </ul>
+
+            <p>Its job is simple: <strong>What actually happened?</strong></p>
+
+            <blockquote className="border-l-[3px] border-sky-500 pl-4 my-5 text-gray-500">
+              <p className="font-medium text-gray-700 mb-2">Example</p>
+              <p>A customer reports that embedded survey responses aren't saving.</p>
+              <p className="mt-2">The investigator finds: 6 test responses, 0 production responses, <code className="text-[14px] bg-gray-100 px-1.5 py-0.5 rounded font-mono not-italic">block_anonymous_responses = true</code></p>
+              <p className="mt-2">That narrows the issue immediately. Production responses are missing identity parameters.</p>
+              <p className="mt-2">Instead of vague troubleshooting, the problem space collapses to one configuration detail.</p>
+            </blockquote>
+
+            {/* Agent 2 */}
+            <h3 className="text-[17px] font-semibold text-gray-900 mt-10">2. The Code Reader</h3>
+            <p className="italic text-gray-500">Traces the actual implementation.</p>
+
+            <p>When database evidence isn't enough, a code analysis agent reads the source.</p>
+
+            <p>It:</p>
+            <ul className="list-disc pl-6 space-y-1 my-4">
+              <li>Locates validation paths</li>
+              <li>Traces conditionals</li>
+              <li>Identifies strict comparisons</li>
+              <li>Surfaces edge cases</li>
+              <li>Points to exact files and line numbers</li>
+            </ul>
+
+            <blockquote className="border-l-[3px] border-sky-500 pl-4 my-5 text-gray-500">
+              <p className="font-medium text-gray-700 mb-2">Example</p>
+              <p>An API integration returns 400 errors on <code className="text-[14px] bg-gray-100 px-1.5 py-0.5 rounded font-mono not-italic">additional_answers</code>.</p>
+              <p className="mt-2">The agent traces validation to <code className="text-[14px] bg-gray-100 px-1.5 py-0.5 rounded font-mono not-italic">additional_questions.ex:209</code> — a strict string match with no Unicode normalization.</p>
+              <p className="mt-2">That one implementation detail explains the behavior. Instead of manually navigating unfamiliar modules, I get a precise, contextual answer.</p>
+            </blockquote>
+
+            {/* Agent 3 */}
+            <h3 className="text-[17px] font-semibold text-gray-900 mt-10">3. The Browser Reproducer</h3>
+            <p className="italic text-gray-500">Provides proof.</p>
+
+            <p>Sometimes the system needs to be tested end-to-end.</p>
+
+            <p>This agent:</p>
+            <ul className="list-disc pl-6 space-y-1 my-4">
+              <li>Launches Playwright</li>
+              <li>Loads the live survey</li>
+              <li>Submits real responses</li>
+              <li>Observes persistence</li>
+            </ul>
+
+            <p>It answers: <strong>Can we reproduce this deterministically?</strong></p>
+
+            <blockquote className="border-l-[3px] border-sky-500 pl-4 my-5 text-gray-500">
+              <p className="font-medium text-gray-700 mb-2">Example</p>
+              <p>Correct URL parameters → response saved.<br />Missing identity → blocked.</p>
+              <p className="mt-2">Conclusion: The system works. The issue is in the customer's template.</p>
+              <p className="mt-2">Reproduction prevents unnecessary escalation.</p>
+            </blockquote>
+
+            {/* Agent 4 */}
+            <h3 className="text-[17px] font-semibold text-gray-900 mt-10">4. The API Simulator</h3>
+            <p className="italic text-gray-500">Tests payload-level behavior.</p>
+
+            <p>For integration tickets, I use an agent that crafts controlled API calls.</p>
+
+            <p>It:</p>
+            <ul className="list-disc pl-6 space-y-1 my-4">
+              <li>Sends structured payloads</li>
+              <li>Modifies encoding</li>
+              <li>Tests edge cases</li>
+              <li>Compares response codes</li>
+            </ul>
+
+            <p>This isolates whether the failure is:</p>
+            <ul className="list-disc pl-6 space-y-1 my-4">
+              <li>Payload formatting</li>
+              <li>Encoding mismatch</li>
+              <li>Validation logic</li>
+              <li>Missing required fields</li>
+            </ul>
+
+            <p>It removes guesswork.</p>
+
+            {/* Production Access */}
+            <h2 className="text-[22px] font-semibold text-gray-900 mt-14 mb-4 pt-8 border-t border-gray-200">
+              Production Access Without Guessing
+            </h2>
+
+            <p>Claude connects through <strong>MCP</strong> (Model Context Protocol):</p>
+            <ul className="list-disc pl-6 space-y-1 my-4">
+              <li>Direct PostgreSQL access (Classic)</li>
+              <li>Supabase access (Zensurveys)</li>
+            </ul>
+
+            <p>To prevent schema hallucination, I store verified SQL templates in CLAUDE.md.</p>
+
+            <p>This ensures:</p>
+            <ul className="list-disc pl-6 space-y-1 my-4">
+              <li>Queries start from known-good patterns</li>
+              <li>Table relationships are stable</li>
+              <li>Investigations follow a defined checklist</li>
+            </ul>
+
+            <p>The agent doesn't rediscover the system every time. It operates within guardrails.</p>
+
+            {/* Structured Memory */}
+            <h2 className="text-[22px] font-semibold text-gray-900 mt-14 mb-4 pt-8 border-t border-gray-200">
+              Structured Memory
+            </h2>
+
+            <p>Three files make the system durable.</p>
 
             <div className="overflow-x-auto my-6 rounded-lg border border-gray-200 bg-gray-50/50">
               <table className="w-full text-[15px] border-collapse">
                 <thead>
                   <tr className="border-b-2 border-gray-200 bg-gray-100/60">
-                    <th className="text-left py-3 px-4 pr-6 font-semibold text-gray-900">Where</th>
-                    <th className="text-left py-3 px-4 font-semibold text-gray-900">What was added</th>
+                    <th className="text-left py-3 px-4 pr-6 font-semibold text-gray-900">File</th>
+                    <th className="text-left py-3 px-4 font-semibold text-gray-900">Purpose</th>
                   </tr>
                 </thead>
                 <tbody className="text-gray-700">
                   <tr className="border-b border-gray-100">
                     <td className="py-3 px-4 pr-6 font-medium text-gray-900">CLAUDE.md</td>
-                    <td className="py-3 px-4">"<code className="text-[14px] bg-gray-100 px-1.5 py-0.5 rounded font-mono">single_select</code> does exact string match — no Unicode normalization. Always copy option strings from API response."</td>
+                    <td className="py-3 px-4">8-step investigation workflow, SQL templates, integration gotchas, validation constraints. Enforces process discipline.</td>
                   </tr>
                   <tr className="border-b border-gray-100">
                     <td className="py-3 px-4 pr-6 font-medium text-gray-900">MEMORY.md</td>
-                    <td className="py-3 px-4">Customer added as repeat entry with org ID and specific encoding pattern</td>
+                    <td className="py-3 px-4">Persists across sessions. Tracks repeat customers, known encoding patterns, historical root causes, edge cases. If we've seen it before, we don't start from zero.</td>
                   </tr>
                   <tr>
-                    <td className="py-3 px-4 pr-6 font-medium text-gray-900">Known Bugs</td>
-                    <td className="py-3 px-4">Missing normalization at <code className="text-[14px] bg-gray-100 px-1.5 py-0.5 rounded font-mono">additional_questions.ex:209-212</code></td>
+                    <td className="py-3 px-4 pr-6 font-medium text-gray-900">Codebase Reference</td>
+                    <td className="py-3 px-4">Known unfixed bugs, exact file paths, SurveyJS quirks, scoring system behaviors. Replaces institutional memory in a one-person team.</td>
                   </tr>
                 </tbody>
               </table>
             </div>
 
-            <p>
-              Next time <em>any</em> customer reports a 400 on <code className="text-[14px] bg-gray-100 px-1.5 py-0.5 rounded font-mono">additional_answers</code>, the agent already checks for encoding mismatches. It doesn't rediscover the bug — it matches the pattern.
-            </p>
+            {/* Case Study */}
+            <h2 className="text-[22px] font-semibold text-gray-900 mt-14 mb-4 pt-8 border-t border-gray-200">
+              🔍 Case Study: The Umlaut Bug
+            </h2>
 
-            <h3 className="text-[17px] font-semibold text-gray-900 mt-10">Two Compounding Systems</h3>
-
-            <p>
-              The umlaut bug example was manual compounding — I updated CLAUDE.md and MEMORY.md by hand. But there's a plugin called <strong className="text-gray-900">CoworkPowers</strong> that automates this for knowledge work.
-            </p>
-
-            <p>It has four phases:</p>
-            <ol className="list-decimal pl-6 space-y-2 my-4">
-              <li><strong className="text-gray-900">Research</strong> — parallel agents gather context, check past learnings</li>
-              <li><strong className="text-gray-900">Work</strong> — specialized agent executes (writer, analyst, decision-architect)</li>
-              <li><strong className="text-gray-900">Review</strong> — up to 8 reviewers in parallel (clarity, tone, completeness, risk, devil's advocate…)</li>
-              <li><strong className="text-gray-900">Compound</strong> — extracts what worked, saves as tagged searchable files</li>
-            </ol>
-
-            <p>So now I have two compounding systems working together:</p>
-            <ul className="list-disc pl-6 space-y-2 my-4">
-              <li><strong className="text-gray-900">Technical investigations</strong> → CLAUDE.md + MEMORY.md (manual, high-signal)</li>
-              <li><strong className="text-gray-900">Knowledge work</strong> → CoworkPowers (automated, pattern-based)</li>
+            <p>A customer reports:</p>
+            <ul className="list-disc pl-6 space-y-1 my-4">
+              <li><code className="text-[14px] bg-gray-100 px-1.5 py-0.5 rounded font-mono">additional_answers</code> returns 400</li>
+              <li>Score submission works</li>
             </ul>
 
-            <p>Both follow the same principle: <strong className="text-gray-900">every task makes the next one faster. It compounds.</strong></p>
+            <p>That suggests a narrow validation failure.</p>
+
+            <h3 className="text-[17px] font-semibold text-gray-900 mt-10">What the agents did</h3>
+            <ol className="list-decimal pl-6 space-y-3 my-4">
+              <li>Queried DB → 30 answers total, only 3 with additional answers</li>
+              <li>Found stored options with mixed encoding — some spelled-out German umlauts, some actual Unicode characters</li>
+              <li>Traced Elixir validation → exact string match, no normalization</li>
+              <li>Tested API live: Unicode umlaut → 400, spelled-out version → 201</li>
+            </ol>
+
+            <div className="rounded-lg bg-gray-50/50 border border-gray-200 px-5 py-4 my-6 text-[15px] leading-relaxed">
+              <p className="font-semibold text-gray-900">Root Cause</p>
+              <p className="mt-1">Mixed encoding in stored options + strict string comparison = deterministic rejection.</p>
+            </div>
+
+            <div className="overflow-x-auto my-6 rounded-lg border border-gray-200 bg-gray-50/50">
+              <table className="w-full text-[15px] border-collapse">
+                <thead>
+                  <tr className="border-b-2 border-gray-200 bg-gray-100/60">
+                    <th className="text-left py-3 px-4 font-semibold text-gray-900">Without agents</th>
+                    <th className="text-left py-3 px-4 font-semibold text-gray-900">With agents</th>
+                  </tr>
+                </thead>
+                <tbody className="text-gray-700">
+                  <tr className="border-b border-gray-100">
+                    <td className="py-3 px-4">Manual DB exploration</td>
+                    <td className="py-3 px-4" rowSpan={4}>One session. Full root cause. Tested and confirmed.</td>
+                  </tr>
+                  <tr className="border-b border-gray-100">
+                    <td className="py-3 px-4">Manual source reading</td>
+                  </tr>
+                  <tr className="border-b border-gray-100">
+                    <td className="py-3 px-4">Custom API crafting</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 px-4">Context switching</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            {/* The Compounding Effect */}
+            <h2 className="text-[22px] font-semibold text-gray-900 mt-14 mb-4 pt-8 border-t border-gray-200">
+              The Compounding Effect
+            </h2>
+
+            <p>Every investigation feeds the system.</p>
+
+            <p>After resolving the umlaut issue, I updated:</p>
+            <ul className="list-disc pl-6 space-y-2 my-4">
+              <li><strong>CLAUDE.md</strong> — exact string match behavior documented</li>
+              <li><strong>MEMORY.md</strong> — customer + encoding pattern stored</li>
+              <li><strong>Code reference file</strong> — missing normalization logged</li>
+            </ul>
+
+            <p>
+              Now, when a 400 appears on <code className="text-[14px] bg-gray-100 px-1.5 py-0.5 rounded font-mono">additional_answers</code>, encoding mismatch is checked immediately.
+            </p>
+
+            <p>The system does not rediscover the issue. It matches the pattern.</p>
+
+            <p>Over time, the investigation process becomes:</p>
+            <ul className="list-disc pl-6 space-y-1 my-4">
+              <li>Faster</li>
+              <li>More deterministic</li>
+              <li>Less dependent on recall</li>
+              <li>Less vulnerable to context switching</li>
+            </ul>
+
+            <p><strong>Every resolved ticket reduces the cost of the next one.</strong></p>
+
+            {/* What This Is */}
+            <h2 className="text-[22px] font-semibold text-gray-900 mt-14 mb-4 pt-8 border-t border-gray-200">
+              What This Is — and Is Not
+            </h2>
+
+            <p>This is not autonomous support.</p>
+            <p>It is <strong>structured amplification</strong>.</p>
+
+            <p>The agents reduce:</p>
+            <ul className="list-disc pl-6 space-y-1 my-4">
+              <li>Search time</li>
+              <li>Cognitive load</li>
+              <li>Repeated reasoning</li>
+              <li>Context switching</li>
+            </ul>
+
+            <p>I still validate findings. I still communicate with customers. Judgment remains human.</p>
+
+            <p>But the investigation surface area shrinks.</p>
 
             {/* Closing */}
             <div className="mt-14 pt-8 border-t border-gray-200">
+              <h2 className="text-[22px] font-semibold text-gray-900 mb-4">
+                The Real Advantage
+              </h2>
+
+              <p>Support normally scales linearly with ticket volume.</p>
+              <p>Pattern recognition scales differently.</p>
+
+              <p className="mt-4">When every ticket:</p>
+
               <div className="rounded-lg bg-amber-50/70 border border-amber-200/60 px-5 py-4 my-6">
                 <p className="text-[16px] font-medium text-amber-900/80 leading-relaxed">
-                  🧠 Investigate → Document findings → Agent gets smarter → Next ticket is faster.
+                  🧠 Investigates → Extracts a root cause → Documents the pattern → Updates system memory
                 </p>
               </div>
-              <p>
-                Over time, the agent builds a library of gotchas, known bugs, and customer history. It compounds. And the more I use it, the wider the gap gets between what one person can handle with this setup versus without it.
-              </p>
+
+              <p>The gap widens.</p>
+              <p>Not because the AI is smarter.</p>
+              <p>Because the system remembers.</p>
             </div>
           </div>
         </article>
