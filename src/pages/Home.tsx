@@ -17,33 +17,31 @@ const posts = [
 
 const Home = () => {
   return (
-    <div className="min-h-screen bg-white">
-      <header className="border-b border-gray-100">
-        <nav className="mx-auto max-w-2xl px-6 py-5 flex items-center justify-between">
-          <Link to="/" className="text-sm font-semibold text-gray-900 hover:text-sky-600 transition-colors duration-200">
+    <div className="min-h-screen bg-white" style={{ fontFamily: "'Inter', system-ui, -apple-system, sans-serif" }}>
+      <header className="border-b border-gray-200">
+        <nav className="mx-auto max-w-[640px] px-6 py-5 flex items-center justify-between">
+          <Link to="/" className="text-[15px] font-semibold text-gray-900 hover:text-sky-600 transition-colors duration-200">
             virna
           </Link>
           <div className="flex gap-5">
-            <Link to="/" className="text-sm text-gray-500 hover:text-gray-900 transition-colors duration-200">blog</Link>
+            <Link to="/" className="text-[15px] text-gray-500 hover:text-gray-900 transition-colors duration-200">blog</Link>
           </div>
         </nav>
       </header>
 
-      <main className="mx-auto max-w-2xl px-6 py-12">
-        <h1 className="text-2xl font-semibold text-gray-900 tracking-tight">Blog</h1>
-        <p className="mt-1 text-sm text-gray-500">Notes, case studies, and things I've built at zenloop.</p>
+      <main className="mx-auto max-w-[640px] px-6 py-14">
+        <h1 className="text-[28px] font-semibold text-gray-900 tracking-tight leading-tight">Blog</h1>
+        <p className="mt-2 text-[15px] text-gray-500 leading-relaxed">Notes, case studies, and things I've built at zenloop.</p>
 
-        <div className="mt-10 space-y-8">
+        <div className="mt-12 space-y-10">
           {posts.map((post) => (
             <article key={post.path}>
               <Link to={post.path} className="group block">
-                <div className="flex items-baseline gap-3">
-                  <time className="shrink-0 text-sm text-gray-400 tabular-nums">{post.date}</time>
-                  <h2 className="text-base font-medium text-gray-900 group-hover:text-sky-600 transition-colors duration-200">
-                    {post.title}
-                  </h2>
-                </div>
-                <p className="mt-1 ml-[calc(theme(spacing.0))] text-sm text-gray-500 leading-relaxed">
+                <time className="text-[13px] font-medium text-gray-400 tracking-wide uppercase">{post.date}</time>
+                <h2 className="mt-1.5 text-[18px] font-semibold text-gray-900 group-hover:text-sky-600 transition-colors duration-200 leading-snug">
+                  {post.title}
+                </h2>
+                <p className="mt-2 text-[15px] text-gray-500 leading-[1.7]">
                   {post.description}
                 </p>
               </Link>
@@ -52,9 +50,9 @@ const Home = () => {
         </div>
       </main>
 
-      <footer className="border-t border-gray-100">
-        <div className="mx-auto max-w-2xl px-6 py-6">
-          <p className="text-xs text-gray-400">Built with curiosity and a bit of frustration.</p>
+      <footer className="border-t border-gray-200">
+        <div className="mx-auto max-w-[640px] px-6 py-8">
+          <p className="text-[13px] text-gray-400">Built with curiosity and a bit of frustration.</p>
         </div>
       </footer>
     </div>
