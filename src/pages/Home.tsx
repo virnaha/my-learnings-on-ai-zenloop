@@ -1,59 +1,62 @@
 import { Link } from "react-router-dom";
-import Footer from "@/components/Footer";
 
 const posts = [
   {
     title: "AI Agents for Solo Support",
     description: "How Claude Code powers a one-person support team — agent architecture, CLAUDE.md guardrails, skills & plugins, and the compounding learning loop.",
-    date: "25 Feb 2026",
-    tag: "CS Monthly",
+    date: "Feb 25, 2026",
     path: "/agents",
   },
   {
     title: "Building an AI-Powered RFP Analyzer",
     description: "How I built a RAG-based tool that reduced RFP response time from days to hours using GPT-4, Supabase, and meta-prompting techniques.",
     date: "2025",
-    tag: "Case Study",
     path: "/rfp",
   },
 ];
 
 const Home = () => {
   return (
-    <div className="min-h-screen flex flex-col">
-      <header className="border-b border-border bg-background py-8">
-        <div className="container mx-auto px-4">
-          <div className="mx-auto max-w-2xl">
-            <h1 className="text-2xl font-semibold tracking-tight">My Learnings on AI</h1>
-            <p className="mt-1 text-sm text-muted-foreground">Notes, case studies, and things I've built at zenloop.</p>
+    <div className="min-h-screen bg-white">
+      <header className="border-b border-gray-100">
+        <nav className="mx-auto max-w-2xl px-6 py-5 flex items-center justify-between">
+          <Link to="/" className="text-sm font-semibold text-gray-900 hover:text-sky-600 transition-colors duration-200">
+            virna
+          </Link>
+          <div className="flex gap-5">
+            <Link to="/" className="text-sm text-gray-500 hover:text-gray-900 transition-colors duration-200">blog</Link>
           </div>
-        </div>
+        </nav>
       </header>
 
-      <main className="flex-1 py-10">
-        <div className="container mx-auto px-4">
-          <div className="mx-auto max-w-2xl space-y-6">
-            {posts.map((post) => (
-              <Link
-                key={post.path}
-                to={post.path}
-                className="block rounded-lg border border-border/40 bg-card p-5 hover:shadow-md hover:border-border transition-all duration-200"
-              >
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="inline-block rounded bg-accent/10 px-2 py-0.5 text-xs font-medium text-accent-foreground">
-                    {post.tag}
-                  </span>
-                  <span className="text-xs text-muted-foreground">{post.date}</span>
+      <main className="mx-auto max-w-2xl px-6 py-12">
+        <h1 className="text-2xl font-semibold text-gray-900 tracking-tight">Blog</h1>
+        <p className="mt-1 text-sm text-gray-500">Notes, case studies, and things I've built at zenloop.</p>
+
+        <div className="mt-10 space-y-8">
+          {posts.map((post) => (
+            <article key={post.path}>
+              <Link to={post.path} className="group block">
+                <div className="flex items-baseline gap-3">
+                  <time className="shrink-0 text-sm text-gray-400 tabular-nums">{post.date}</time>
+                  <h2 className="text-base font-medium text-gray-900 group-hover:text-sky-600 transition-colors duration-200">
+                    {post.title}
+                  </h2>
                 </div>
-                <h2 className="text-lg font-semibold">{post.title}</h2>
-                <p className="mt-1 text-sm text-muted-foreground leading-relaxed">{post.description}</p>
+                <p className="mt-1 ml-[calc(theme(spacing.0))] text-sm text-gray-500 leading-relaxed">
+                  {post.description}
+                </p>
               </Link>
-            ))}
-          </div>
+            </article>
+          ))}
         </div>
       </main>
 
-      <Footer />
+      <footer className="border-t border-gray-100">
+        <div className="mx-auto max-w-2xl px-6 py-6">
+          <p className="text-xs text-gray-400">Built with curiosity and a bit of frustration.</p>
+        </div>
+      </footer>
     </div>
   );
 };
