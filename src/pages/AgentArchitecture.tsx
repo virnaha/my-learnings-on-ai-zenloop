@@ -17,7 +17,7 @@ const AgentArchitecture = () => {
       <main className="mx-auto max-w-[640px] px-6 py-14">
         <article>
           <header className="mb-12">
-            <time className="text-[13px] font-medium text-gray-400 tracking-wide uppercase">Feb 25, 2026</time>
+            <time className="text-[13px] font-medium text-gray-400 tracking-wide uppercase">Feb 2026</time>
             <h1 className="mt-2 text-[28px] font-semibold text-gray-900 tracking-tight leading-tight">
               How AI Agents Power My One-Person Support Team
             </h1>

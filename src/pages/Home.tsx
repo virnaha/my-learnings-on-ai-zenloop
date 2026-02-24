@@ -4,7 +4,7 @@ const posts = [
   {
     title: "How AI Agents Power My One-Person Support Team",
     description: "Multiple agents. Two databases. One terminal. An operational debugging architecture built on Claude Code.",
-    date: "Feb 25, 2026",
+    date: "Feb 2026",
     path: "/agents",
   },
   {
