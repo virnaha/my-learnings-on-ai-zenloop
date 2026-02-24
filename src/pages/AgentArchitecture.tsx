@@ -207,7 +207,7 @@ const AgentArchitecture = () => {
                 </p>
               </div>
               <p>
-                After 14 investigations, the agent has a library of gotchas, known bugs, and customer history. It compounds. And the more I use it, the wider the gap gets between what one person can handle with this setup versus without it.
+                Over time, the agent builds a library of gotchas, known bugs, and customer history. It compounds. And the more I use it, the wider the gap gets between what one person can handle with this setup versus without it.
               </p>
             </div>
           </div>
